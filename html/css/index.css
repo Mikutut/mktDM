@@ -74,6 +74,41 @@ html, body
 
 }
 
+#mkt_dm-HeaderClock
+{
+
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: white;
+
+}
+
+#mkt_dm-HeaderDate
+{
+
+    position: absolute;
+    top: calc(1% + 1rem);
+    right: 1%;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: white;
+
+}
+
+#mkt_dm-HeaderPlayerName
+{
+
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    font-size: 0.8rem;
+    font-weight: 300;
+
+}
+
 #mkt_dm-MainDiv
 {
 

@@ -13,10 +13,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="css/index.css" type="text/css" />
 
+        <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+
         <script>
 
             var navBarState = false;
             var currentElement = 1;
+
+            /* CONFIG */
+            var inverseDate = false;
+            var dateSeparator = "/";
 
         </script>
 
@@ -29,6 +36,9 @@
             <span>mkt_dm</span>
             <span>DM System for FiveM</span>
             <span><span style="cursor: progress">Version: 1.0.0 - Build: 300720</span> - by Mikut &hearts;</span>
+            <span id="mkt_dm-HeaderClock"></span>
+            <span id="mkt_dm-HeaderDate"></span>
+            <span id="mkt_dm-HeaderPlayerName" style="color: lightgreen">Placeholder name</span>
 
         </div>
 
@@ -36,12 +46,12 @@
 
             <div id="mkt_dm-ReceivedDiv" class="mkt_dm-MainElement">
 
-
+                
 
             </div>
             <div id="mkt_dm-SentDiv" class="mkt_dm-MainElement">
 
-
+                
 
             </div>
             <div id="mkt_dm-SendDMDiv" class="mkt_dm-MainElement">
@@ -52,7 +62,7 @@
 
         </div>
 
-        <button id="mkt_dm-Controls">Wyjdź z DMów [ ESC ]</button>
+        <button id="mkt_dm-Controls" onclick="closeNUI()">Wyjdź z DMów [ ESC ]</button>
 
         <!-- SIDEBAR -->
         <button id="mkt_dm-SidebarButton" onclick="toggleNavBar()">≡</button>
@@ -62,7 +72,7 @@
 
                 <li class="mkt_dm-SidebarElement" onclick="setMainElement(1)">Odebrane</li>
                 <li class="mkt_dm-SidebarElement" onclick="setMainElement(2)">Wysłane</li>
-                <li class="mkt_dm-SidebarElement" onclick="setMainElement(3)" style="margin-top: 3rem;">Wyślij DM'a</li>
+                <li class="mkt_dm-SidebarElement" onclick="setMainElement(3)">Wyślij DM'a</li>
                 <li class="mkt_dm-SidebarElement" onclick="setMainElement('hideAll')" style="margin-top: 5rem;">Schowaj główne okienko</li>
 
             </ul>
@@ -71,7 +81,10 @@
 
     </body>
 
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/clock.js" type="text/javascript"></script>
     <script src="js/toggleNavBar.js" type="text/javascript"></script>
     <script src="js/setMainElement.js" type="text/javascript"></script>
+    <script src="js/close.js" type="text/javascript"></script>
 
 </html>
