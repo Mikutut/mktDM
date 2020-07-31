@@ -11,9 +11,9 @@
         
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="css/index.css" type="text/css" />
+        <link rel="stylesheet" href="index.css" type="text/css" />
 
-        <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="jquery.js" type="text/javascript"></script>
         <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
 
         <script>
@@ -35,7 +35,7 @@
 
             <span>mkt_dm</span>
             <span>DM System for FiveM</span>
-            <span><span style="cursor: progress">Version: 1.0.0 - Build: 300720</span> - by Mikut &hearts;</span>
+            <span><span style="cursor: progress">Version: 1.0.1 - Build: 300720</span> - by Mikut &hearts;</span>
             <span id="mkt_dm-HeaderClock"></span>
             <span id="mkt_dm-HeaderDate"></span>
             <span id="mkt_dm-HeaderPlayerName" style="color: lightgreen">Placeholder name</span>
@@ -46,17 +46,111 @@
 
             <div id="mkt_dm-ReceivedDiv" class="mkt_dm-MainElement">
 
+                <span class="mkt_dm-MainElementTitle">Odebrane</span>
+
+                <span style="display: block; margin: 0 auto; text-align: center; font-size: 1.5rem;">
                 
+                    <label for="mkt_dm-ReceivedMsgCount">Wyświetl:</label>
+                    <select name="mkt_dm-ReceivedMsgCount" id="mkt_dm-ReceivedMsgCount" style="vertical-align: middle;">
+
+                        <option value="10" selected="selected">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="noLimit">wszystkie</option>
+
+                    </select> wiadomości.
+                    
+                </span>
+                <table id="mkt_dm-ReceivedTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <td>Lp.</td>
+                            <td>Nadawca</td>
+                            <td>Temat</td>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+
+
+                    </tbody>
+
+
+                </table>
 
             </div>
             <div id="mkt_dm-SentDiv" class="mkt_dm-MainElement">
 
+                <span class="mkt_dm-MainElementTitle">Odebrane</span>
+
+                <span style="display: block; margin: 0 auto; text-align: center; font-size: 1.5rem;">
                 
+                    <label for="mkt_dm-SentMsgCount">Wyświetl:</label>
+                    <select name="mkt_dm-SentMsgCount" id="mkt_dm-SentMsgCount" style="vertical-align: middle;">
+
+                        <option value="10" selected="selected">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="noLimit">wszystkie</option>
+
+                    </select> wiadomości.
+                    
+                </span>
+                <table id="mkt_dm-SentTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <td>Lp.</td>
+                            <td>Adresat</td>
+                            <td>Temat</td>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+
+
+                    </tbody>
+
+
+                </table>
 
             </div>
             <div id="mkt_dm-SendDMDiv" class="mkt_dm-MainElement">
 
 
+
+            </div>
+            <div id="mkt_dm-InfoDiv" class="mkt_dm-MainElement">
+
+                <span class="mkt_dm-MainElementTitle" style="color: white;">Informacje</span>
+                <div>
+
+                    <img src="logo.png" alt="Mikut Logo" style="height: 50%; position: absolute; left: 5%; top: 50%; transform: translate(0, -50%);"/>
+                    <div style="height: 50%; width: 50%; position: absolute; left: 65%; top: 50%; transform: translate(-45%, -50%);">
+
+                        <span class="mkt_dm-InfoDivSpan" style="font-size: 2rem; font-weight: bold;">MKT_DM</span>
+                        <span class="mkt_dm-InfoDivSpan" style="font-size: 1rem;">by Mikut</span>
+                        <span class="mkt_dm-InfoDivSpan" style="margin-top: 0.5rem;">Made for SunState RP with &hearts;</span>
+                        <span class="mkt_dm-InfoDivSpan" style="margin-top: 1rem;"><a href="https://github.com/Mikutut" target="_blank">> GitHub <</a></span>
+                        <span class="mkt_dm-InfoDivSpan"><a href="https://www.youtube.com/channel/UCMqkeB4UXgUuXbYRPUqE88w" target="_blank">> YouTube <</a></span>
+                        <span class="mkt_dm-InfoDivSpan"><a href="https://discord.gg/EfrSVfZ" target="_blank">> Discord <</a></span>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -73,6 +167,7 @@
                 <li class="mkt_dm-SidebarElement" onclick="setMainElement(1)">Odebrane</li>
                 <li class="mkt_dm-SidebarElement" onclick="setMainElement(2)">Wysłane</li>
                 <li class="mkt_dm-SidebarElement" onclick="setMainElement(3)">Wyślij DM'a</li>
+                <li class="mkt_dm-SidebarElement" onclick="setMainElement(4)">Informacje</li>
                 <li class="mkt_dm-SidebarElement" onclick="setMainElement('hideAll')" style="margin-top: 5rem;">Schowaj główne okienko</li>
 
             </ul>
@@ -81,10 +176,10 @@
 
     </body>
 
-    <script src="js/main.js" type="text/javascript"></script>
-    <script src="js/clock.js" type="text/javascript"></script>
-    <script src="js/toggleNavBar.js" type="text/javascript"></script>
-    <script src="js/setMainElement.js" type="text/javascript"></script>
-    <script src="js/close.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+    <script src="clock.js" type="text/javascript"></script>
+    <script src="toggleNavBar.js" type="text/javascript"></script>
+    <script src="setMainElement.js" type="text/javascript"></script>
+    <script src="close.js" type="text/javascript"></script>
 
 </html>

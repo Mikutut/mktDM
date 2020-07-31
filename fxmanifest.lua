@@ -14,4 +14,16 @@ files {
 }
 
 client_script 'dm_client.lua'
-server_script 'dm_server.lua'
+server_scripts {
+
+    '@mysql-async/lib/MySQL.lua',
+    'dm_server.lua'
+
+}
+
+dependencies {
+
+    'es_extended',
+    'mysql-async'
+
+}
