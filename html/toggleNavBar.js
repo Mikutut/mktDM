@@ -7,6 +7,7 @@ document.addEventListener("keydown", function(e)
         toggleNavBar();
 
     }
+    e.preventDefault();
 
 });
 

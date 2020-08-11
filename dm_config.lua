@@ -1,13 +1,13 @@
-local Keys = {
-	["ESC"] = { keyCode = 322, keyName = "Escape" },
-	["F1"] = { keyCode = 288, keyName = "F1" }, 
-	["F2"] = { keyCode = 289, keyName = "F2" }, 
-	["F3"] = { keyCode = 170, keyName = "F3" }, 
-	["F5"] = { keyCode = 166, keyName = "F5" }, 
-	["F6"] = { keyCode = 167, keyName = "F6"}, 
+HotKeys = {
+	["ESC"] = 322,
+	["F1"] = 288, 
+	["F2"] = 289, 
+	["F3"] = 170, 
+	["F5"] = 166, 
+	["F6"] = 167, 
 	["F7"] = 168, 
 	["F8"] = 169, 
-	["F9"] = { keyCode = 56, keyName = "F9" }, 
+	["F9"] = 56, 
 	["F10"] = 57,
 	["~"] = 243, 
 	["1"] = 157, 
@@ -82,5 +82,5 @@ Config = {}
 -- CLIENT CONFIGS
 
 Config.DefaultLocale = 'en-US' -- set default locale    DEFAULT: 'en-US'
-Config.Hotkey = Keys["F9"] -- change NUI hotkey    DEFAULT: 'Keys["F9"]'
+Config.Hotkey = HotKeys["F9"] -- change NUI hotkey    DEFAULT: 'Keys["F9"]'
 Config.MessageInNotification = false -- allow messages to be shown in notification    DEFAULT: false

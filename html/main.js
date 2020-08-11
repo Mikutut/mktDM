@@ -26,7 +26,8 @@ $(document).ready(() => {
                         {
 
                             document.body.style.display = "initial";
-                            HK_name = item.keyname;
+
+                            /* setHotkey(item.hotkey); */
 
                             document.getElementById("mkt_dm-Controls").innerHTML = locale.closePanel + " [ " + HK_name + " ]";
                             document.querySelector(".mkt_dm-SidebarElement:nth-child(1)").innerHTML = locale.received;

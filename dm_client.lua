@@ -31,6 +31,19 @@ function changeLocale(_lcl)
 
 end
 
+local function getIndexofValue(tab, val)
+
+    local index = {}
+    for k, v in pairs(tab) do
+
+        index[v] = k
+
+    end
+
+    return index[val]
+
+end
+
 TriggerEvent('esx:getSharedObject', function(obj)
 
 	ESX = obj
@@ -51,15 +64,16 @@ Citizen.CreateThread(function()
     while true do
 
         Wait(1)
-        if IsControlJustPressed(0, Config.Hotkey.keyCode) then
+        if IsControlJustPressed(0, Config.Hotkey) then
 
+            Citizen.Trace(getIndexofValue(HotKeys, Config.Hotkey) .. "\n")
             setLocale(lcl)
             SetNuiFocus(true, true)
             SendNUIMessage({
         
                 type = 'displayControl',
                 display = true,
-                keyname = Config.Hotkey.keyName
+                hotkey = getIndexofValue(HotKeys, Config.Hotkey)
         
             })
             SendNUIMessage({
@@ -101,7 +115,6 @@ AddEventHandler('dm:sendMessage:failed', function(execution, receiver)
         
             type = 'displayControl',
             display = true,
-            keyname = Config.Hotkey.keyName,
             openDiv = 3
         
         })
