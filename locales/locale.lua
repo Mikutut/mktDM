@@ -29,7 +29,8 @@ Locales['en-US'] = {
     DMReceived = "~r~~h~You received new message!~n~~n~From: ~b~%s ~h~~n~~r~~h~Topic: ~b~%s ~h~~n~~n~~r~~h~To show it, open DM panel ( ~g~%s ~r~)~h~",
     DMReceivedNotify = "~r~~h~You received new message!~n~~n~From: ~b~%s ~h~~n~~r~~h~Topic: ~b~%s ~h~~n~~r~~h~Message:~h~ ~w~%s ~n~~n~~r~~h~To show more info about it, open DM panel ( ~g~%s ~r~)~h~",
     noTopic = "No topic",
-    noMessage = "No message"
+    noMessage = "No message",
+    advancedSearchBtn = "Advanced search"
 
 }
 
@@ -62,7 +63,8 @@ Locales['pl-PL'] = {
     DMReceived = "~r~~h~Otrzymałeś nową wiadomość!~n~~n~Od: ~b~%s ~h~~n~~r~~h~Temat: ~b~%s ~h~~n~~n~~r~~h~Aby ją wyświetlić, otwórz panel DMów ( ~g~%s ~r~)~h~",
     DMReceivedNotify = "~r~~h~Otrzymałeś nową wiadomość!~h~~n~~n~~h~Od: ~b~%s ~h~~n~~r~~h~Temat: ~b~%s ~h~~n~~r~~h~Wiadomość:~h~ ~w~%s ~n~~n~~r~~h~Aby wyświetlić więcej szczegółów, otwórz panel DMów ( ~g~%s ~r~)~h~",
     noTopic = "Brak tematu",
-    noMessage = "Brak wiadomości"
+    noMessage = "Brak wiadomości",
+    advancedSearchBtn = "Zaawansowane wyszukiwanie"
 
 
 }

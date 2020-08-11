@@ -1,16 +1,3 @@
-document.addEventListener("keydown", function(e)
-{
-
-    if(e.key === "Tab")
-    {
-
-        toggleNavBar();
-
-    }
-    e.preventDefault();
-
-});
-
 function toggleNavBar()
 {
 

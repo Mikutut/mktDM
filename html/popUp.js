@@ -1,4 +1,4 @@
-function initPopup(_bg, _popUp, _header)
+function initPopup(_bg, _popUp, _header, _close)
 {
 
     if(_bg !== undefined)
@@ -41,6 +41,25 @@ function initPopup(_bg, _popUp, _header)
         _header.style.textAlign = "center";
         _header.style.marginTop = "1rem";
         _header.style.boxSizing = "border-box";
+    }
+
+    if(_close !== undefined)
+    {
+
+        _close.innerHTML = locale.close;
+        _close.style.display = "block";
+        _close.style.width = "100%";
+        _close.style.backgroundColor = "red";
+        _close.style.fontSize = "1.5rem";
+        _close.style.textAlign = "center";
+        _close.style.color = "white";
+        _close.style.border = "none";
+        _close.style.outline = "none";
+        _close.style.position = "absolute";
+        _close.style.bottom = "0";
+        _close.style.left = "0";
+        _close.style.boxSizing = "border-box";
+
     }
 
 }
@@ -99,7 +118,7 @@ function receivedDivPopup(_sender, _receiver, _topic, _message, _date, _element)
     popUp.appendChild(close);
     bg.appendChild(popUp);
 
-    initPopup(bg, popUp, header);
+    initPopup(bg, popUp, header, close);
 
     header2.style.display = "block";
     header2.style.width = "100%";
@@ -125,20 +144,6 @@ function receivedDivPopup(_sender, _receiver, _topic, _message, _date, _element)
     message.style.margin = "0.5rem auto 0 auto";
     message.style.boxSizing = "border-box";
 
-    close.innerHTML = locale.close;
-    close.style.display = "block";
-    close.style.width = "100%";
-    close.style.backgroundColor = "red";
-    close.style.fontSize = "1.5rem";
-    close.style.textAlign = "center";
-    close.style.color = "white";
-    close.style.border = "none";
-    close.style.outline = "none";
-    close.style.position = "absolute";
-    close.style.bottom = "0";
-    close.style.left = "0";
-    close.style.boxSizing = "border-box";
-
     document.body.appendChild(bg);
 
     close.onclick = function(){ bg.remove(); };
@@ -153,26 +158,16 @@ function advancedSearchOptionsPopup(windowType)
     var header = document.createElement("span");
     var close = document.createElement("button");
 
-    header.innerHTML += "Wyświetl wiadomość";
+    header.innerHTML += locale.advancedSearchBtn;
     popUp.appendChild(header);
+    popUp.appendChild(close);
     bg.appendChild(popUp);
 
-    initPopup(bg, popUp, header);
-
-    if(windowType === "received")
-    {
-
-        popUp.style.backgroundColor = document.getElementById("mkt_dm-ReceivedDiv").style.backgroundColor;
-
-    }
-    else if(windowType === "sent")
-    {
-
-        popUp.style.backgroundColor = document.getElementById("mkt_dm-SentDiv").style.backgroundColor;
-
-    }
+    initPopup(bg, popUp, header, close);
 
     document.body.appendChild(bg);
+
+    close.onclick = function(){ bg.remove(); };
 
 }
 

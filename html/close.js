@@ -1,14 +1,3 @@
-document.addEventListener('keydown', function(event){
-
-    if(event.key === HK_name || event.key == "Escape")
-    {
-
-        closeNUI();
-
-    }
-
-})
-
 function closeNUI()
 {
 

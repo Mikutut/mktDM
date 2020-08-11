@@ -27,7 +27,7 @@ $(document).ready(() => {
 
                             document.body.style.display = "initial";
 
-                            /* setHotkey(item.hotkey); */
+                            setHotkey(item.hotkey);
 
                             document.getElementById("mkt_dm-Controls").innerHTML = locale.closePanel + " [ " + HK_name + " ]";
                             document.querySelector(".mkt_dm-SidebarElement:nth-child(1)").innerHTML = locale.received;
@@ -39,6 +39,7 @@ $(document).ready(() => {
                             document.querySelector("#mkt_dm-ReceivedDiv > span.mkt_dm-MainElementTitle").innerHTML = locale.received;
                             document.querySelector("#mkt_dm-ReceivedDiv > span:not(.mkt_dm-MainElementTitle) > label[for=\"mkt_dm-ReceivedMsgCount\"]").innerHTML = locale.showLimit1 + ": ";
                             document.querySelector("#mkt_dm-ReceivedDiv > span:not(.mkt_dm-MainElementTitle) > span").innerHTML = " " + locale.showLimit2 + ".";
+                            document.querySelector("#mkt_dm-ReceivedAdvancedSearchSpan").innerHTML = locale.advancedSearchBtn;
 
                             document.querySelector("#mkt_dm-ReceivedTable > thead > tr > td:nth-child(1)").innerHTML = locale.dateSentInTable;
                             document.querySelector("#mkt_dm-ReceivedTable > thead > tr > td:nth-child(2)").innerHTML = locale.msgSender;
