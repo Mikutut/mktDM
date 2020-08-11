@@ -21,9 +21,12 @@
             var navBarState = false;
             var currentElement = 1;
 
+            var HK_name;
+
             /* CONFIG */
             var inverseDate = false;
             var dateSeparator = "/";
+            var locale;
 
         </script>
 
@@ -35,7 +38,7 @@
 
             <span>mkt_dm</span>
             <span>DM System for FiveM</span>
-            <span><span style="cursor: progress">Version: 1.0.1 - Build: 300720</span> - by Mikut &hearts;</span>
+            <span><span style="cursor: progress">Version: 1.1.0 - Build: 110820</span> - by Mikut &hearts;</span>
             <span id="mkt_dm-HeaderClock"></span>
             <span id="mkt_dm-HeaderDate"></span>
             <span id="mkt_dm-HeaderPlayerName" style="color: lightgreen">Placeholder name</span>
@@ -51,15 +54,8 @@
                 <span style="display: block; margin: 0 auto; text-align: center; font-size: 1.5rem;">
                 
                     <label for="mkt_dm-ReceivedMsgCount">Wyświetl:</label>
-                    <select name="mkt_dm-ReceivedMsgCount" id="mkt_dm-ReceivedMsgCount" style="vertical-align: middle;">
-
-                        <option value="10" selected="selected">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value="noLimit">wszystkie</option>
-
-                    </select> wiadomości.
+                    <input type="text" name="mkt_dm-ReceivedMsgCount" id="mkt_dm-ReceivedMsgCount" placeholder="10" value="10" style="vertical-align: middle;" autocomplete="off"/>
+                    <span></span>
                     
                 </span>
                 <table id="mkt_dm-ReceivedTable">
@@ -68,9 +64,10 @@
 
                         <tr>
 
-                            <td>Lp.</td>
+                            <td>Data i godzina wysłania</td>
                             <td>Nadawca</td>
                             <td>Temat</td>
+                            <td></td>
 
                         </tr>
 
@@ -88,20 +85,13 @@
             </div>
             <div id="mkt_dm-SentDiv" class="mkt_dm-MainElement">
 
-                <span class="mkt_dm-MainElementTitle">Odebrane</span>
+                <span class="mkt_dm-MainElementTitle">Wysłane</span>
 
                 <span style="display: block; margin: 0 auto; text-align: center; font-size: 1.5rem;">
                 
                     <label for="mkt_dm-SentMsgCount">Wyświetl:</label>
-                    <select name="mkt_dm-SentMsgCount" id="mkt_dm-SentMsgCount" style="vertical-align: middle;">
-
-                        <option value="10" selected="selected">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value="noLimit">wszystkie</option>
-
-                    </select> wiadomości.
+                    <input type="text" name="mkt_dm-SentMsgCount" id="mkt_dm-SentMsgCount" placeholder="10" value="10" style="vertical-align: middle;" autocomplete="off"/>
+                    <span></span>
                     
                 </span>
                 <table id="mkt_dm-SentTable">
@@ -110,9 +100,10 @@
 
                         <tr>
 
-                            <td>Lp.</td>
+                            <td>Data i godzina wysłania</td>
                             <td>Adresat</td>
                             <td>Temat</td>
+                            <td></td>
 
                         </tr>
 
@@ -130,7 +121,21 @@
             </div>
             <div id="mkt_dm-SendDMDiv" class="mkt_dm-MainElement">
 
+                <span class="mkt_dm-MainElementTitle">Wyślij DMa</span>
+                <div id="mkt_dm-SendDMForm">
 
+                    <label for="receiver">Adresat: </label>
+                    <input type="text" name="receiver" placeholder="ID" />
+
+                    <label for="topic">Temat: </label>
+                    <input type="text" name="topic" placeholder="Biały węgorz (opcjonalne)" />
+
+                    <label for="messageContent">Wiadomość: </label>
+                    <textarea name="messageContent" placeholder="(opcjonalne)"></textarea>
+
+                    <button onclick="verifyInput()">Wyślij</button>
+
+                </div>
 
             </div>
             <div id="mkt_dm-InfoDiv" class="mkt_dm-MainElement">
@@ -156,7 +161,7 @@
 
         </div>
 
-        <button id="mkt_dm-Controls" onclick="closeNUI()">Wyjdź z DMów [ ESC ]</button>
+        <button id="mkt_dm-Controls" onclick="closeNUI()"></button>
 
         <!-- SIDEBAR -->
         <button id="mkt_dm-SidebarButton" onclick="toggleNavBar()">≡</button>
@@ -164,10 +169,10 @@
 
             <ul>
 
-                <li class="mkt_dm-SidebarElement" onclick="setMainElement(1)">Odebrane</li>
-                <li class="mkt_dm-SidebarElement" onclick="setMainElement(2)">Wysłane</li>
-                <li class="mkt_dm-SidebarElement" onclick="setMainElement(3)">Wyślij DM'a</li>
-                <li class="mkt_dm-SidebarElement" onclick="setMainElement(4)">Informacje</li>
+                <li class="mkt_dm-SidebarElement" onclick="setMainElement(1)"></li>
+                <li class="mkt_dm-SidebarElement" onclick="setMainElement(2)"></li>
+                <li class="mkt_dm-SidebarElement" onclick="setMainElement(3)"></li>
+                <li class="mkt_dm-SidebarElement" onclick="setMainElement(4)"></li>
                 <li class="mkt_dm-SidebarElement" onclick="setMainElement('hideAll')" style="margin-top: 5rem;">Schowaj główne okienko</li>
 
             </ul>
@@ -176,8 +181,12 @@
 
     </body>
 
-    <script src="main.js" type="text/javascript"></script>
+    <script src="locale.js" type="text/javascript"></script>
     <script src="clock.js" type="text/javascript"></script>
+    <script src="date.js" type="text/javascript"></script>
+    <script src="sendDM.js" type="text/javascript"></script>
+    <script src="popUp.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
     <script src="toggleNavBar.js" type="text/javascript"></script>
     <script src="setMainElement.js" type="text/javascript"></script>
     <script src="close.js" type="text/javascript"></script>

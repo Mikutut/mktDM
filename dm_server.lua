@@ -1,20 +1,22 @@
 RegisterServerEvent('dm:sendMessage')
 AddEventHandler('dm:sendMessage', function(sender, receiver, message, topic)
 
-    if not topic == nil then
+    if topic ~= nil then
         MySQL.ready(function()
         
-            MySQL.Async.execute('INSERT INTO `mkt_dm` (`sender`, `receiver`, `messageTopic`, `messageContent`) VALUES (@sender, @receiver, @messageTopic, @messageContent)', 
+            MySQL.Async.execute('INSERT INTO `mkt_dm` (`sender`, `senderIdentifier`, `receiver`, `receiverIdentifier`, `messageTopic`, `messageContent`) VALUES (@sender, @senderSteam, @receiver, @receiverSteam, @messageTopic, @messageContent)', 
             {
 
                 ['sender'] = GetPlayerName(sender),
+                ['senderSteam'] = GetPlayerIdentifiers(sender)[1],
                 ['receiver'] = GetPlayerName(receiver),
+                ['receiverSteam'] = GetPlayerIdentifiers(receiver)[1],
                 ['messageTopic'] = topic,
                 ['messageContent'] = message
 
             }, function(affectedRows)
             
-                TriggerClientEvent('dm:receiveMessage', receiver, sender, message, topic)
+                TriggerClientEvent('dm:receiveMessage', receiver, sender, topic)
 
             end)
 
@@ -23,15 +25,17 @@ AddEventHandler('dm:sendMessage', function(sender, receiver, message, topic)
 
         MySQL.ready(function()
         
-            MySQL.Async.execute('INSERT INTO `mkt_dm` ( `sender`, `receiver`, `messageContent` ) VALUES (@sender, @receiver, @messageContent)', {
+            MySQL.Async.execute('INSERT INTO `mkt_dm` ( `sender`, `senderIdentifier`, `receiver`, `receiverIdentifier`, `messageContent` ) VALUES (@sender, @senderSteam, @receiver, @receiverSteam, @messageContent)', {
 
                 ['sender'] = GetPlayerName(sender),
+                ['senderSteam'] = GetPlayerIdentifiers(sender)[1],
                 ['receiver'] = GetPlayerName(receiver),
+                ['receiverSteam'] = GetPlayerIdentifiers(sender)[1],
                 ['messageContent'] = message
 
             }, function(affectedRows)
             
-                TriggerClientEvent('dm:receiveMessage', receiver, sender, message)
+                TriggerClientEvent('dm:receiveMessage', receiver, sender)
             
             end)
         
@@ -46,7 +50,9 @@ RegisterCommand("dm", function(source, args)
         local receiver = args[1]
         table.remove(args, 1)
         local message = table.concat(args, " ")
-        TriggerClientEvent('dm:sendMessage:verify', source, source, receiver, message, nil)
+        if message == nil or message == " " then message = "^^^NO_MSG^^^" end
+        local exec = tostring(1)
+        TriggerClientEvent('dm:sendMessage:verify', source, source, receiver, message, "^^^NO_TOPIC^^^", exec)
     else
         print('^4Argument mismatch!^7');
     end
@@ -59,12 +65,12 @@ end, false)
 RegisterServerEvent('dm:fetchReceived')
 AddEventHandler('dm:fetchReceived', function(src, lB, el)
 
-    if lB ~= "noLimit" then
+    if lB ~= "-1" then
 
 
-        MySQL.Async.fetchAll('SELECT * FROM `mkt_dm` WHERE `receiver` = @receiver ORDER BY `id` ASC', {
+        MySQL.Async.fetchAll('SELECT * FROM `mkt_dm` WHERE `receiverIdentifier` = @receiverSteam ORDER BY `messageDate` DESC', {
 
-            ['receiver'] = GetPlayerName(src)
+            ['receiverSteam'] = GetPlayerIdentifiers(src)[1]
 
         }, function(result)
             
@@ -73,9 +79,7 @@ AddEventHandler('dm:fetchReceived', function(src, lB, el)
 
             for i = 1, limit, 1 do
 
-                if #result >= i then
-                    res[i] = result[i]
-                end
+                res[i] = result[i]
 
             end
             
@@ -88,12 +92,11 @@ AddEventHandler('dm:fetchReceived', function(src, lB, el)
 
         MySQL.ready(function()
         
-            MySQL.Async.fetchAll('SELECT * FROM `mkt_dm` WHERE `receiver` = @receiver ORDER BY `id` ASC', {
+            MySQL.Async.fetchAll('SELECT * FROM `mkt_dm` WHERE `receiverIdentifier` = @receiverSteam ORDER BY `messageDate` DESC', {
 
-                ['receiver'] = GetPlayerName(src)
+                ['receiverSteam'] = GetPlayerIdentifiers(src)[1]
 
             }, function(result)
-            
 
                 TriggerClientEvent('dm:fetchReceived:Client', src, result, el)
             

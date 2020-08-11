@@ -11,6 +11,9 @@ This resource allows players to send DMs (Direct Messages) to each other via cha
 
 `ensure 'mkt_dm'`
 
+4. Import file `mkt_dm.sql` to your database.
+5. Enjoy!
+
 ### Usage
 To send DM to other player, you can use:
 
@@ -20,5 +23,5 @@ To send DM to other player, you can use:
 
 2. NUI Interface:
 
-***COMING SOON***
+To open DM Panel, press key specified in config file.
 

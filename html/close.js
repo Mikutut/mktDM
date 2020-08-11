@@ -1,6 +1,6 @@
 document.addEventListener('keydown', function(e){
 
-    if(e.key === "Escape" || e.key === "F9")
+    if(e.key === HK_name)
     {
 
         closeNUI();

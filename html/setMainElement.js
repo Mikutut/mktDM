@@ -1,9 +1,4 @@
-var receivedVal = "-1";
-var sentVal = "-1";
-
 document.getElementById("mkt_dm-ReceivedMsgCount").addEventListener('change', function(e){
-
-    receivedVal = e.target.value;
 
     receivedFetch();
 
@@ -11,7 +6,6 @@ document.getElementById("mkt_dm-ReceivedMsgCount").addEventListener('change', fu
 
 document.getElementById("mkt_dm-SentMsgCount").addEventListener('change', function(e){
 
-    sentVal = e.target.value;
 
     sentFetch();
 
@@ -20,14 +14,9 @@ document.getElementById("mkt_dm-SentMsgCount").addEventListener('change', functi
 function receivedFetch()
 {
 
-    if(receivedVal == "-1") 
-    { 
-        
-        receivedVal = "10"; 
+    var limit = document.getElementById("mkt_dm-ReceivedMsgCount").value;
 
-    }
-
-    var json = { limitBy: receivedVal, element: "received" };
+    var json = { limitBy: limit, element: "received" };
 
     $.post('http://mkt_dm/fetchreceived', JSON.stringify(json) );
 
@@ -36,14 +25,9 @@ function receivedFetch()
 function sentFetch()
 {
 
-    if(sentVal == "-1")
-    {
+    var limit = document.getElementById("mkt_dm-SentMsgCount").value;
 
-        sentVal = "10";
-
-    }
-
-    var json = { limitBy: sentVal, element: "sent" };
+    var json = { limitBy: limit, element: "sent" };
 
     $.post('http://mkt_dm/fetchreceived', JSON.stringify(json));
 
