@@ -31,7 +31,7 @@ To do these things, proceed as follows:
 Now you should be able to open DM panel in-game.
 
 It should look like this:
-![Screenshot1](screenshots/ss1.png)
+![Screenshot1](screenshots/ss1.jpg)
 
 If it isn't looking like this, you have messed something up. Try to correct some mistakes in your config file.
 
