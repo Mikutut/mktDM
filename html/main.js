@@ -60,6 +60,14 @@ $(document).ready(() => {
 
                             document.querySelector("#mkt_dm-InfoDiv > span.mkt_dm-MainElementTitle").innerHTML = locale.info;
 
+                            if(item.openDiv !== undefined)
+                            {
+
+                                navBarState = true;
+                                setMainElement(item.openDiv);
+
+                            }
+
                         }
                         else
                         {

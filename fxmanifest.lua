@@ -29,6 +29,12 @@ server_scripts {
 
 }
 
+server_exports {
+
+    'sendDM'
+
+}
+
 dependencies {
 
     'es_extended',

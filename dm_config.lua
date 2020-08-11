@@ -81,6 +81,6 @@ Config = {}
 
 -- CLIENT CONFIGS
 
-Config.DefaultLocale = 'en-US' -- set default locale
-Config.Hotkey = Keys["F9"] -- change NUI hotkey
---[[ Config.MessageInNotification = false -- allows message to show as notification ]]
+Config.DefaultLocale = 'en-US' -- set default locale    DEFAULT: 'en-US'
+Config.Hotkey = Keys["F9"] -- change NUI hotkey    DEFAULT: 'Keys["F9"]'
+Config.MessageInNotification = false -- allow messages to be shown in notification    DEFAULT: false

@@ -1,3 +1,12 @@
+function sendDM(src, receiver, topic, message)
+
+    if topic == nil or topic == "" then topic = "^^^NO_TOPIC^^^" end
+    if message == nil or message == "" then message = "^^^NO_MSG^^^" end
+    local exec = tostring(1)
+    TriggerClientEvent('dm:sendMessage:verify', src, src, receiver, message, topic, exec)
+
+end
+
 RegisterServerEvent('dm:sendMessage')
 AddEventHandler('dm:sendMessage', function(sender, receiver, message, topic)
 
@@ -16,7 +25,8 @@ AddEventHandler('dm:sendMessage', function(sender, receiver, message, topic)
 
             }, function(affectedRows)
             
-                TriggerClientEvent('dm:receiveMessage', receiver, sender, topic)
+                TriggerClientEvent('esx:showNotification', sender, string.format(Locales[Config.DefaultLocale].DMSent, tostring(GetPlayerName(sender)), tostring(sender)))
+                TriggerClientEvent('dm:receiveMessage', receiver, sender, topic, message)
 
             end)
 
@@ -35,7 +45,8 @@ AddEventHandler('dm:sendMessage', function(sender, receiver, message, topic)
 
             }, function(affectedRows)
             
-                TriggerClientEvent('dm:receiveMessage', receiver, sender)
+                TriggerClientEvent('esx:showNotification', sender, string.format(Locales[Config.DefaultLocale].DMSent, tostring(GetPlayerName(sender)), tostring(sender)))
+                TriggerClientEvent('dm:receiveMessage', receiver, sender, "^^^NO_TOPIC^^^", message)
             
             end)
         
@@ -50,7 +61,7 @@ RegisterCommand("dm", function(source, args)
         local receiver = args[1]
         table.remove(args, 1)
         local message = table.concat(args, " ")
-        if message == nil or message == " " then message = "^^^NO_MSG^^^" end
+        if message == nil or message == "" then message = "^^^NO_MSG^^^" end
         local exec = tostring(1)
         TriggerClientEvent('dm:sendMessage:verify', source, source, receiver, message, "^^^NO_TOPIC^^^", exec)
     else

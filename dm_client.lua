@@ -1,15 +1,33 @@
 local ESX = nil
+local lcl = nil
 
-function setLocale(loc)
+local incorrectLocaleText = "\n[MKT_DM - WARNING] Locale: \"%s\" has not been found, so it was set to \"en-US\".\nTry to correct this error by changing default locale in dm_config.lua on next resource start\nor checking if desired locale is surely present in locales/locale.lua file!\n\n"
 
-    local _locale
-    if Locales[loc] == nil then _locale = json.encode(Locales['en-US']) else _locale = json.encode(Locales[loc]) end
+function setLocale()
+
+    local _locale = json.encode(Locales[lcl])
     SendNUIMessage({
 
         type = "changeLocale",
         locale = _locale
 
     })
+
+end
+
+function changeLocale(_lcl)
+
+    if Locales[_lcl] == nil then
+
+        lcl = "en-US"
+        Citizen.Trace(string.format(incorrectLocaleText, tostring(_lcl)))
+
+    else
+
+        lcl = _lcl
+        setLocale()
+
+    end
 
 end
 
@@ -24,6 +42,7 @@ AddEventHandler("onClientResourceStart", function(resName)
     if GetCurrentResourceName() ~= resName then return end
 
     SetNuiFocus(false, false)
+    changeLocale(Config.DefaultLocale)
 
 end)
 
@@ -34,7 +53,7 @@ Citizen.CreateThread(function()
         Wait(1)
         if IsControlJustPressed(0, Config.Hotkey.keyCode) then
 
-            setLocale(Config.DefaultLocale)
+            setLocale(lcl)
             SetNuiFocus(true, true)
             SendNUIMessage({
         
@@ -60,35 +79,34 @@ RegisterNetEvent('dm:sendMessage:verified')
 AddEventHandler('dm:sendMessage:verified', function(sender, receiver, message, topic)
 
     TriggerServerEvent('dm:sendMessage', sender, receiver, message, topic)
-    TriggerEvent('esx:showNotification', Locales[Config.DefaultLocale].DMSent[1] .. tostring(GetPlayerName(GetPlayerFromServerId(sender)) .. Locales[Config.DefaultLocale].DMSent[2] .. tostring(sender) .. Locales[Config.DefaultLocale].DMSent[3]))
-
-end)
-
-RegisterNetEvent('dm:sendMessage:failed')
-AddEventHandler('dm:sendMessage:failed', function(execution)
-
-    TriggerEvent('esx:showNotification', Locales[Config.DefaultLocale].playerOffline)
-
-    if execution == "2" then
-
-        SendNUIMessage({
-        
-            type = 'displayControl',
-            display = true,
-            keyname = Config.Hotkey.keyName
-        
-        })
-
-        Citizen.Trace("Sent!")
-        
-    end
 
 end)
 
 RegisterNetEvent("dm:sendMessage:incorrect")
-AddEventHandler('dm:sendMessage:incorrect', function()
+AddEventHandler('dm:sendMessage:incorrect', function(receiver)
 
-    TriggerEvent('esx:showNotification', Locales[Config.DefaultLocale].IDInvalid)
+    TriggerEvent('esx:showNotification', string.format(Locales[lcl].IDInvalid, tostring(receiver)))
+
+end)
+
+RegisterNetEvent('dm:sendMessage:failed')
+AddEventHandler('dm:sendMessage:failed', function(execution, receiver)
+
+    TriggerEvent('esx:showNotification', string.format(Locales[lcl].playerOffline, tostring(receiver)))
+
+    if execution == "2" then
+
+        SetNuiFocus(true, true)
+        SendNUIMessage({
+        
+            type = 'displayControl',
+            display = true,
+            keyname = Config.Hotkey.keyName,
+            openDiv = 3
+        
+        })
+        
+    end
 
 end)
 
@@ -108,22 +126,29 @@ AddEventHandler('dm:sendMessage:verify', function(sender, receiver, message, top
 
             end
 
-            TriggerEvent('dm:sendMessage:failed', exec)
+            TriggerEvent('dm:sendMessage:failed', exec, receiver)
 
         end
 
     else
-        TriggerEvent('dm:sendMessage:incorrect')
+
+        TriggerEvent('dm:sendMessage:incorrect', receiver)
+
     end
 
 end)
 
 RegisterNetEvent('dm:receiveMessage')
-AddEventHandler('dm:receiveMessage', function(sender, topic)
+AddEventHandler('dm:receiveMessage', function(sender, topic, message)
 
     local _topic
-    if topic ~= "^^^NO_TOPIC^^^" then _topic = tostring(topic) else _topic = Locales[Config.DefaultLocale].noTopic end
-    ESX.ShowNotification(Locales[Config.DefaultLocale].DMReceived[1] .. tostring(GetPlayerName(GetPlayerFromServerId(sender))) .. Locales[Config.DefaultLocale].DMReceived[2] .. tostring(_topic) .. Locales[Config.DefaultLocale].DMReceived[3] .. tostring(Config.Hotkey.keyName) .. Locales[Config.DefaultLocale].DMReceived[4])
+    if topic ~= "^^^NO_TOPIC^^^" then _topic = tostring(topic) else _topic = Locales[lcl].noTopic end
+    if message ~= "^^^NO_MSG^^^" then message = tostring(message) else message = Locales[lcl].noMessage end
+    if not Config.MessageInNotification then
+        ESX.ShowNotification(string.format(Locales[lcl].DMReceived, tostring(GetPlayerName(GetPlayerFromServerId(sender))), tostring(_topic), tostring(Config.Hotkey.keyName)))
+    else
+        ESX.ShowNotification(string.format(Locales[lcl].DMReceivedNotify, tostring(GetPlayerName(GetPlayerFromServerId(sender))), tostring(_topic), tostring(message), tostring(Config.Hotkey.keyName)))
+    end
 
 end)
 
