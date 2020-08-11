@@ -12,28 +12,23 @@ This resource allows players to send DMs (Direct Messages) to each other via cha
 5. Enjoy!
 
 ### Usage
-To send DM to other player, you can use:
+**To send DM to other player, you can use:**
 
-1. Chat command:
+**1. Chat command:**
 
 `/dm [Server ID] [Message]`
 
-2. NUI Interface:
+**2. NUI Interface:**
 
-If you've just installed mkt_dm, the first thing you have to do in order to make NUI panel work is to set your default locale and hotkey.
-To do these things, proceed as follows:
+**If you've just installed mkt_dm, the first thing you have to do in order to make NUI panel work is to set your default locale and hotkey.**
+**To do these things, proceed as follows:**
 1. Open `dm_config.lua`
 2. Locate `Keys` table (it should be at the top of the file) and choose the key of your preference
 3. Locate `Config.Hotkey` variable and set it to the key you have just chosen, e.g. `Config.Hotkey = Keys["F9"]` or `Config.Hotkey = Keys["BACKSPACE"]`
 4. Locate `Config.DefaultLocale` variable and set it to the locale of your preference (there are currently only two locales available - "pl-PL" and "en-US")
 5. Save the file and close it.
 
-Now you should be able to open DM panel in-game.
-
-It should look like this:
-![Screenshot1](screenshots/ss1.jpg)
-
-If it isn't looking like this, you have messed something up. Try to correct some mistakes in your config file.
+**Now you should be able to open DM panel in-game.**
 
 
 
