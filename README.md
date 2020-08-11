@@ -4,12 +4,21 @@
 ### Purpose
 This resource allows players to send DMs (Direct Messages) to each other via chat command or neat NUI interface.
 
+### Dependencies
+This resource requires [es_extended](https://github.com/esx-framework/es_extended) and [mysql-async](https://github.com/brouznouf/fivem-mysql-async) resources to work.
+
 ### Installation
 1. Download this resource
 2. Place it anywhere in your (server-location)/resources folder
 3. Add this line to `server.cfg` file in main server directory: `ensure 'mkt_dm'`
 4. Import file `mkt_dm.sql` to your database.
 5. Enjoy!
+
+### Features
+* Two ways of sending messages - chat command (w/o topic) or NUI Interface
+* Localization
+* Storing messages in SQL database
+* Sending DMs from other resources via export function
 
 ### Usage
 **To send DM to other player, you can use:**
