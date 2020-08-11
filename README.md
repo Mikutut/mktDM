@@ -31,11 +31,14 @@ This resource requires [es_extended](https://github.com/esx-framework/es_extende
 
 **If you've just installed mkt_dm, the first thing you have to do in order to make NUI panel work is to set your default locale and hotkey.**
 **To do these things, proceed as follows:**
-1. Open `dm_config.lua`
-2. Locate `Keys` table (it should be at the top of the file) and choose the key of your preference
-3. Locate `Config.Hotkey` variable and set it to the key you have just chosen, e.g. `Config.Hotkey = Keys["F9"]` or `Config.Hotkey = Keys["BACKSPACE"]`
-4. Locate `Config.DefaultLocale` variable and set it to the locale of your preference (there are currently only two locales available - "pl-PL" and "en-US")
+1. Open `dm_config.lua`.
+2. Locate `Keys` table (it should be at the top of the file) and choose the key of your preference.
+3. Locate `Config.Hotkey` variable and set it to the key you have just chosen, e.g. `Config.Hotkey = Keys["F9"]` or `Config.Hotkey = Keys["BACKSPACE"]`.
+4. Locate `Config.DefaultLocale` variable and set it to the locale of your preference (there are currently only two locales available - "pl-PL" and "en-US").
 5. Save the file and close it.
+6. Open `hotkey.js`.
+7. Locate `HK_name` variable and set it to the key of your preference (you can check JS key name [here](http://www.keycodes.info)).
+8. Repeat step 5.
 
 **Now you should be able to open DM panel in-game.**
 
