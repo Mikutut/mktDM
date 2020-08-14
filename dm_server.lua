@@ -70,6 +70,13 @@ RegisterCommand("dm", function(source, args)
 
 end, false)
 
+RegisterCommand("mkt_dm$changeLocale", function(source, args)
+
+    local locale = args[1]
+    TriggerClientEvent('dm:changeLocale', -1, locale)
+
+end, true)
+
 --------------------------------------------------------------------------
 -- UI RELATED EVENTS, DON'T TOUCH --
 

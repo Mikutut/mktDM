@@ -156,14 +156,64 @@ function advancedSearchOptionsPopup(windowType)
     var bg = document.createElement("div");
     var popUp = document.createElement("div");
     var header = document.createElement("span");
+    var options = document.createElement("div");
     var close = document.createElement("button");
 
     header.innerHTML += locale.advancedSearchBtn;
     popUp.appendChild(header);
+    popUp.appendChild(options);
     popUp.appendChild(close);
     bg.appendChild(popUp);
 
     initPopup(bg, popUp, header, close);
+
+    options.style = "display: flex; flex-flow: column; flex: 0 0 auto; width: 95%; height: 75%; box-sizing: border-box; margin: 1rem auto 0 auto; border: 1px solid #000000; color: black; font-size: 1.5rem;";
+    var sortBy = document.createElement("span");
+    sortBy.style = "display: flex; flex-flow: row nowrap; flex: 0 0 auto; justify-content: center; vertical-align: middle; width: 100%; clear: both; margin: 0.5rem 0 0 0;";
+    
+    /* var chkBox = document.createElement("label");
+    var chkTick = document.createElement("span");
+    var chkInput = document.createElement("input");
+
+    chkBox.className = "mkt_dm-CheckboxContainer";
+    chkInput.type = "checkbox";
+    chkTick.className = "mkt_dm-CheckboxTick";
+
+    chkBox.appendChild(chkInput);
+    chkBox.appendChild(chkTick); */
+
+    var dropdown = document.createElement("div");
+    var dropdownContent = document.createElement("div");
+    var dpCList = document.createElement("ul");
+
+    dpCList.className = "mkt_dm-DropdownList";
+
+    dropdown.innerHTML = locale.sortBy;
+    dropdown.className = "mkt_dm-Dropdown";
+    dropdownContent.className = "mkt_dm-DropdownContent";
+
+    for(var i = 1; i <= 4; i++)
+    {
+
+        var li = document.createElement("li");
+        li.innerHTML = "CHUJ!";
+        li.onclick = function()
+        {
+
+            dropdownContent.style.display = "none";
+            $.post("http://mkt_dm/receivedSortBy", JSON.stringify({ sortby: i.toString() }));
+
+        };
+        dpCList.appendChild(li);
+
+    }
+
+    dropdownContent.appendChild(dpCList);
+
+    dropdown.appendChild(dropdownContent);
+    
+    sortBy.appendChild(dropdown);
+    options.appendChild(sortBy);
 
     document.body.appendChild(bg);
 

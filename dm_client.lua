@@ -44,6 +44,14 @@ local function getIndexofValue(tab, val)
 
 end
 
+RegisterNetEvent('dm:sendMessage:verified')
+RegisterNetEvent("dm:sendMessage:incorrect")
+RegisterNetEvent('dm:sendMessage:failed')
+RegisterNetEvent('dm:sendMessage:verify')
+RegisterNetEvent('dm:receiveMessage')
+RegisterNetEvent('dm:fetchReceived:Client')
+RegisterNetEvent('dm:changeLocale')
+
 TriggerEvent('esx:getSharedObject', function(obj)
 
 	ESX = obj
@@ -89,21 +97,20 @@ Citizen.CreateThread(function()
 
 end)
 
-RegisterNetEvent('dm:sendMessage:verified')
 AddEventHandler('dm:sendMessage:verified', function(sender, receiver, message, topic)
 
     TriggerServerEvent('dm:sendMessage', sender, receiver, message, topic)
 
 end)
 
-RegisterNetEvent("dm:sendMessage:incorrect")
+
 AddEventHandler('dm:sendMessage:incorrect', function(receiver)
 
     TriggerEvent('esx:showNotification', string.format(Locales[lcl].IDInvalid, tostring(receiver)))
 
 end)
 
-RegisterNetEvent('dm:sendMessage:failed')
+
 AddEventHandler('dm:sendMessage:failed', function(execution, receiver)
 
     TriggerEvent('esx:showNotification', string.format(Locales[lcl].playerOffline, tostring(receiver)))
@@ -123,7 +130,7 @@ AddEventHandler('dm:sendMessage:failed', function(execution, receiver)
 
 end)
 
-RegisterNetEvent('dm:sendMessage:verify')
+
 AddEventHandler('dm:sendMessage:verify', function(sender, receiver, message, topic, exec)
 
 	local foo = function() receiver = tonumber(receiver) return tonumber(receiver) end
@@ -151,7 +158,7 @@ AddEventHandler('dm:sendMessage:verify', function(sender, receiver, message, top
 
 end)
 
-RegisterNetEvent('dm:receiveMessage')
+
 AddEventHandler('dm:receiveMessage', function(sender, topic, message)
 
     local _topic
@@ -165,6 +172,12 @@ AddEventHandler('dm:receiveMessage', function(sender, topic, message)
 
 end)
 
+AddEventHandler('dm:changeLocale', function(_locale)
+
+    changeLocale(_locale)
+
+end)
+
 -- NUI CALLBACKS DOWN THERE \/ \/ \/ \/ \/ DON'T TOUCH
 
 RegisterNUICallback('fetchreceived', function(data, cb)
@@ -175,7 +188,7 @@ RegisterNUICallback('fetchreceived', function(data, cb)
 
 end)
 
-RegisterNetEvent('dm:fetchReceived:Client')
+
 AddEventHandler('dm:fetchReceived:Client', function(result, el)
 
     SendNUIMessage({

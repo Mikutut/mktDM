@@ -30,7 +30,9 @@ Locales['en-US'] = {
     DMReceivedNotify = "~r~~h~You received new message!~n~~n~From: ~b~%s ~h~~n~~r~~h~Topic: ~b~%s ~h~~n~~r~~h~Message:~h~ ~w~%s ~n~~n~~r~~h~To show more info about it, open DM panel ( ~g~%s ~r~)~h~",
     noTopic = "No topic",
     noMessage = "No message",
-    advancedSearchBtn = "Advanced search"
+    advancedSearchBtn = "Advanced search",
+    sortBy = "Sort by",
+    show = "Show"
 
 }
 
@@ -64,7 +66,9 @@ Locales['pl-PL'] = {
     DMReceivedNotify = "~r~~h~Otrzymałeś nową wiadomość!~h~~n~~n~~h~Od: ~b~%s ~h~~n~~r~~h~Temat: ~b~%s ~h~~n~~r~~h~Wiadomość:~h~ ~w~%s ~n~~n~~r~~h~Aby wyświetlić więcej szczegółów, otwórz panel DMów ( ~g~%s ~r~)~h~",
     noTopic = "Brak tematu",
     noMessage = "Brak wiadomości",
-    advancedSearchBtn = "Zaawansowane wyszukiwanie"
+    advancedSearchBtn = "Zaawansowane wyszukiwanie",
+    sortBy = "Sortuj według",
+    show = "Wyświetl"
 
 
 }
