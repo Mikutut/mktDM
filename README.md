@@ -1,6 +1,11 @@
 # **MKT_DM**
 ## Mikut's DM system for FiveM
 
+# ATTENTION!
+# DUE TO MY SELF-EMBARRASSENT CAUSED BY THIS CODE, THIS PROJECT (AT LEAST IN THIS REPO) WON'T BE CONTINUED
+# I'LL PASTE HERE LINK TO NEW REPO IF ONE WOULD BE CREATED IN THE FUTURE
+# HAVE A NICE DAY EVERYONE :D
+
 ### Purpose
 This resource allows players to send DMs (Direct Messages) to each other via chat command or neat NUI interface.
 
