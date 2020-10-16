@@ -1,0 +1,24 @@
+{
+  "name": "mkt_dm",
+  "version": "0.2.1",
+  "description": "Mikut's DM System for FiveM - Revision 2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikutut/mkt_dm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mikutut/mkt_dm/issues"
+  },
+  "homepage": "https://github.com/Mikutut/mkt_dm#readme",
+  "dependencies": {
+    "@citizenfx/client": "^1.0.3073-1",
+    "@citizenfx/server": "^1.0.3073-1"
+  }
+}
