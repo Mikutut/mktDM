@@ -1,4 +1,4 @@
-# html
+# src
 
 ## Project setup
 ```

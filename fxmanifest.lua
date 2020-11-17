@@ -2,23 +2,24 @@ fx_version "cerulean"
 game "gta5"
 
 author 'Marcin "Mikut" Mikuła'
-description "Mikut's DM System for FiveM - Revision 2.0"
-version '0.2.1'
+description "Mikut's DM system for FiveM"
+version "0.1-prerelease"
 
-ui_page "html/public/index.html"
+ui_page "html/index.html"
 
 files {
-    "node_modules/*",
-    "package.json",
-    "package-lock.json",
-    "html/*"
+    "html/*",
+    "html/js/*",
+    "html/css/*",
+    "html/img/*"
 }
 
 client_scripts {
-    "client/client.js",
-    "config/config.js"
+    "client/*",
+    "config/*"
 }
+
 server_scripts {
-    "server/server.js",
-    "config/config.js"
+    "server/*",
+    "config/*"
 }
