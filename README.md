@@ -4,7 +4,7 @@
 
 
 ## This branch ("legacy") is now obsolete and will be no longer maintained. 
-## New version of mkt_dm is now being developed under "master" branch.
+## New version of mkt_dm is now being developed under "dev" branch.
 
 ### Purpose
 This resource allows players to send DMs (Direct Messages) to each other via chat command or neat NUI interface.
