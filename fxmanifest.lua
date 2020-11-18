@@ -23,3 +23,7 @@ server_scripts {
     "server/*",
     "config/*"
 }
+
+dependencies {
+    "mktNotifs"
+}
