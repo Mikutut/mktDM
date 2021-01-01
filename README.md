@@ -22,4 +22,4 @@ As of today (17.11.2020), mktDM requires these repositories to work properly:
 
 ---
 
-### Mikut 2020-2020
+### Mikut 2020-2021
