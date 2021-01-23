@@ -4,6 +4,10 @@
 
 ---
 
+# THIS REPOSITORY IS NO LONGER BEING MAINTAINED AND ALL WORK ON IT HAS BEEN ABORTED
+
+---
+
 ## Dependencies
 
 As of today (17.11.2020), mktDM requires these repositories to work properly:
